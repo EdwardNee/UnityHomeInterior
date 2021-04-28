@@ -113,7 +113,7 @@
 64-->D:\Projects\Unity\Projects\UnityHomeInterior\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:16:5-101
 65            android:name="unity.build-id"
 65-->D:\Projects\Unity\Projects\UnityHomeInterior\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:16:16-45
-66            android:value="6c9e056e-e3df-4b07-9d0c-c4d37c4e2c3a" />
+66            android:value="216fa8e0-a524-4366-b6aa-40cd014fca80" />
 66-->D:\Projects\Unity\Projects\UnityHomeInterior\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:16:46-98
 67        <meta-data
 67-->D:\Projects\Unity\Projects\UnityHomeInterior\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:17:5-88
