@@ -48,7 +48,7 @@ public class ProgramManager : MonoBehaviour
         //Находим скрипт.
         ARRaycastManagerScript = FindObjectOfType<ARRaycastManager>();
 
-        planeMarkerPrefab.SetActive(false);
+        //planeMarkerPrefab.SetActive(false);
     }
 
     // Update is called once per frame
@@ -254,37 +254,40 @@ public class ProgramManager : MonoBehaviour
     /// </summary>
     private void ScaleObject()
     {
-        //Rotation by two fingers.
-        Touch touch = Input.GetTouch(0);
-        touchPos = touch.position;
-
-        if (Input.touchCount == 2)
+        if (Input.touchCount > 0)
         {
-            //Берем кооррдинаты пальцев.
-            Touch f1 = Input.touches[0];
-            Touch f2 = Input.touches[1];
+            //Rotation by two fingers.
+            Touch touch = Input.GetTouch(0);
+            touchPos = touch.position;
 
-            //Если какой-то из пальцев движется.
-            if (f1.phase == TouchPhase.Moved || f2.phase == TouchPhase.Moved)
+            if (Input.touchCount == 2)
             {
-                float fingersDist = Vector2.Distance(f1.position, f2.position);
-                //Расстояние до касания.
-                float prevFingersDist = Vector2.Distance(f1.position - f1.deltaPosition, f2.position - f2.deltaPosition);
-                float delta = fingersDist - prevFingersDist;
+                //Берем кооррдинаты пальцев.
+                Touch f1 = Input.touches[0];
+                Touch f2 = Input.touches[1];
 
-                //Берем размер объекта.
-                float xVal = selectedObject.transform.localScale.x;
-                float yVal = selectedObject.transform.localScale.y;
-                float zVal = selectedObject.transform.localScale.z;
+                //Если какой-то из пальцев движется.
+                if (f1.phase == TouchPhase.Moved || f2.phase == TouchPhase.Moved)
+                {
+                    float fingersDist = Vector2.Distance(f1.position, f2.position);
+                    //Расстояние до касания.
+                    float prevFingersDist = Vector2.Distance(f1.position - f1.deltaPosition, f2.position - f2.deltaPosition);
+                    float delta = fingersDist - prevFingersDist;
 
-                //Если расстояние между пальцами стало меньше, то объект уменьшаем, иначе увеличиваем.
-                if (delta > 0)
-                {
-                    selectedObject.transform.localScale = new Vector3(xVal + xVal * 0.05f, yVal + yVal * 0.05f, zVal + zVal * 0.05f);
-                }
-                else if (delta < 0)
-                {
-                    selectedObject.transform.localScale = new Vector3(xVal - xVal * 0.05f, yVal - yVal * 0.05f, zVal - zVal * 0.05f);
+                    //Берем размер объекта.
+                    float xVal = selectedObject.transform.localScale.x;
+                    float yVal = selectedObject.transform.localScale.y;
+                    float zVal = selectedObject.transform.localScale.z;
+
+                    //Если расстояние между пальцами стало меньше, то объект уменьшаем, иначе увеличиваем.
+                    if (delta > 0)
+                    {
+                        selectedObject.transform.localScale = new Vector3(xVal + xVal * 0.05f, yVal + yVal * 0.05f, zVal + zVal * 0.05f);
+                    }
+                    else if (delta < 0)
+                    {
+                        selectedObject.transform.localScale = new Vector3(xVal - xVal * 0.05f, yVal - yVal * 0.05f, zVal - zVal * 0.05f);
+                    }
                 }
             }
         }

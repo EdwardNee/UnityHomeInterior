@@ -22,7 +22,6 @@ public class ChooseObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
     private void ChooseObjectFunc()

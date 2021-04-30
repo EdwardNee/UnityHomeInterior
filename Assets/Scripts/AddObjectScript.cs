@@ -12,7 +12,6 @@ public class AddObjectScript : MonoBehaviour
     void Start()
     {
         programManagerScript = FindObjectOfType<ProgramManager>();
-
         btn = GetComponent<Button>();
         btn.onClick.AddListener(AddObjectFunc);
     }
@@ -26,5 +25,6 @@ public class AddObjectScript : MonoBehaviour
     private void AddObjectFunc()
     {
         programManagerScript.scrollView.SetActive(true);
+        LoadAssetsData loadAssetsData = new LoadAssetsData();
     }
 }
