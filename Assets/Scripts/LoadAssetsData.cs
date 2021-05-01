@@ -36,23 +36,26 @@ public class LoadAssetsData : MonoBehaviour
             //    isLoaded = true;
             //}
 
-            for (int i = 0; i < items.Count; i++)
+            Element currElement;
+            for (int i = 0; i < els.Count; i++)//items
             {
                 //GameObject prefabCr = AssetDatabase.LoadAssetAtPath($"Assets/Prefabs/Furniture/{i}.prefab", typeof(GameObject)) as GameObject;
                 // GameObject prefabCr = AssetDatabase.LoadAssetAtPath($"Assets/Prefabs/Furniture/{i}.prefab", typeof(GameObject)) as GameObject;
                 //Debug.Log(contentHandler == null);
+                currElement = els[i];
                 GameObject b = Instantiate(prefab, contentHandler.transform);
-                b.GetComponent<ChooseObject>().chosedObj = items[i];
-                isLoaded = true;
+                b.GetComponent<ChooseObject>().chosedObj = currElement.ElementPrefab;//items[i];
+                b.GetComponent<Image>().sprite = currElement.ElementSprite;
             }
+            isLoaded = true;
         }
     }
 
     public Text txt;
-
     [SerializeField]
     private string _label;
     private List<GameObject> items = new List<GameObject>();
+    private List<Element> els = new List<Element>();
     public async Task Get(string label)
     {
         //Загружаем ссылки.
@@ -60,10 +63,10 @@ public class LoadAssetsData : MonoBehaviour
 
         foreach (var item in locations)
         {
-            var element = await Addressables.LoadAssetAsync<GameObject>(item).Task;
-            items.Add(element);
+            var element = await Addressables.LoadAssetAsync<Element>(item).Task;
+            els.Add(element);   //items
         }
-        txt.text = items.Count.ToString();
+        txt.text = els.Count.ToString();
     }
-    
+
 }
