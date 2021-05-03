@@ -6,6 +6,9 @@ using UnityEngine.UI;
 using UnityEngine.AddressableAssets;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Класс загрузки данных с Addressable на кнопки.
+/// </summary>
 public class LoadAssetsData : MonoBehaviour
 {
     [SerializeField]
@@ -16,33 +19,30 @@ public class LoadAssetsData : MonoBehaviour
     private GameObject prefab;
     private bool isLoaded;
 
+    [SerializeField]
+    private string _label;
+    private List<Element> loadingElements;
+
+    public Text txt;
+
     private void Start()
     {
+        loadingElements = new List<Element>();
         click.onClick.AddListener(LoadingAssets);
     }
+
     public async void LoadingAssets()
     {
 
         if (!isLoaded)
         {
-            await Get(_label);
-            //for (int i = 0; i < 3; i++)
-            //{
-            //    GameObject prefabCr = AssetDatabase.LoadAssetAtPath($"Assets/Prefabs/Furniture/{i}.prefab", typeof(GameObject)) as GameObject;
-            //    // GameObject prefabCr = AssetDatabase.LoadAssetAtPath($"Assets/Prefabs/Furniture/{i}.prefab", typeof(GameObject)) as GameObject;
-            //    Debug.Log(contentHandler == null);
-            //    GameObject b = Instantiate(prefab, contentHandler.transform);
-            //    b.GetComponent<ChooseObject>().chosedObj = prefabCr;
-            //    isLoaded = true;
-            //}
+            await GetDataAsync(_label);
 
             Element currElement;
-            for (int i = 0; i < els.Count; i++)//items
+            for (int i = 0; i < loadingElements.Count; i++)//items
             {
                 //GameObject prefabCr = AssetDatabase.LoadAssetAtPath($"Assets/Prefabs/Furniture/{i}.prefab", typeof(GameObject)) as GameObject;
-                // GameObject prefabCr = AssetDatabase.LoadAssetAtPath($"Assets/Prefabs/Furniture/{i}.prefab", typeof(GameObject)) as GameObject;
-                //Debug.Log(contentHandler == null);
-                currElement = els[i];
+                currElement = loadingElements[i];
                 GameObject b = Instantiate(prefab, contentHandler.transform);
                 b.GetComponent<ChooseObject>().chosedObj = currElement.ElementPrefab;//items[i];
                 b.GetComponent<Image>().sprite = currElement.ElementSprite;
@@ -51,12 +51,7 @@ public class LoadAssetsData : MonoBehaviour
         }
     }
 
-    public Text txt;
-    [SerializeField]
-    private string _label;
-    private List<GameObject> items = new List<GameObject>();
-    private List<Element> els = new List<Element>();
-    public async Task Get(string label)
+    public async Task GetDataAsync(string label)
     {
         //Загружаем ссылки.
         var locations = await Addressables.LoadResourceLocationsAsync(label).Task;
@@ -64,9 +59,9 @@ public class LoadAssetsData : MonoBehaviour
         foreach (var item in locations)
         {
             var element = await Addressables.LoadAssetAsync<Element>(item).Task;
-            els.Add(element);   //items
+            loadingElements.Add(element);   //items
         }
-        txt.text = els.Count.ToString();
+        txt.text = loadingElements.Count.ToString();
     }
 
 }
