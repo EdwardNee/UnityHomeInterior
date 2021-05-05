@@ -15,7 +15,6 @@ public class DialogColorChange : MonoBehaviour
     // Start is called before the first frame update
     public void StartThis()
     {
-        Debug.Log("adadasdasd");
         panel = GetComponent<Transform>();
         panel.gameObject.SetActive(true);
         shadowPanel.gameObject.SetActive(true);

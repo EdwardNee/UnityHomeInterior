@@ -11,12 +11,11 @@ public class MaterialSetterButton : MonoBehaviour
     private Color color;
     [SerializeField]
     private string text;
-
     private Button btn;
-    private Material settingMaterial;
+    private static Material settingMaterial;
     private ProgramManager programManagerScript;
 
-    public Material Material
+    public static Material Material
     {
         get
         {
@@ -44,8 +43,7 @@ public class MaterialSetterButton : MonoBehaviour
     private void SetMaterialFunc()
     {
         settingMaterial = material;
-        DialogColorChange dc = FindObjectOfType<DialogColorChange>();
-        dc.Close();
+        Debug.Log(Material);
         programManagerScript.colorChangedDel?.Invoke();
     }
 }

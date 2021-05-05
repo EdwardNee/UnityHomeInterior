@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a968b2178cb8a9346a0d46f2161c3d33, type: 3}
   m_Name: chair
   m_EditorClassIdentifier: 
-  elementPrefab: {fileID: 3416376502494649369, guid: ea97e0f8cce0b0047b27360555589604, type: 3}
+  elementPrefab: {fileID: 759494080791610090, guid: 56ea2c210f9daae44a9ce369076cf692, type: 3}
   elementSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}

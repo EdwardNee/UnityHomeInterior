@@ -347,13 +347,20 @@ public class ProgramManager : MonoBehaviour
     public Text txt;
     private MaterialSetterButton materialSetterButtonScript;
     private RaycastHit privateHitObject;
+
     /// <summary>
     /// Функция для изменения цвета на объекте.
     /// </summary>
     private void ChangeColorObject()
     {
-        Debug.Log("called");
-        txt.text = "CAAAALED";
-        privateHitObject.collider.GetComponent<MeshRenderer>().material = materialSetterButtonScript.Material;
+        Transform[] transformArray = privateHitObject.collider.gameObject.GetComponentsInChildren<Transform>();
+        foreach (var e in transformArray)
+        {
+            if (e.name.Equals("obj"))
+            {
+                e.GetComponent<MeshRenderer>().material = MaterialSetterButton.Material;
+                Debug.Log(e.GetComponent<MeshRenderer>().materials[0] + " set");
+            }
+        }
     }
 }
