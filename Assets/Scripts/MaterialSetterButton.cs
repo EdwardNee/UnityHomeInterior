@@ -14,6 +14,7 @@ public class MaterialSetterButton : MonoBehaviour
 
     private Button btn;
     private Material settingMaterial;
+    private ProgramManager programManagerScript;
 
     public Material Material
     {
@@ -26,6 +27,8 @@ public class MaterialSetterButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        programManagerScript = FindObjectOfType<ProgramManager>();
+
         //Получаем кнопку, на которой скрипт, далее изменяем переданные свойства.
         btn = GetComponent<Button>();
         btn.GetComponentInChildren<Text>().text = text;
@@ -41,5 +44,8 @@ public class MaterialSetterButton : MonoBehaviour
     private void SetMaterialFunc()
     {
         settingMaterial = material;
+        DialogColorChange dc = FindObjectOfType<DialogColorChange>();
+        dc.Close();
+        programManagerScript.colorChangedDel?.Invoke();
     }
 }

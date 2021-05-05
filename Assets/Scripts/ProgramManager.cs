@@ -7,6 +7,10 @@ using UnityEngine.XR.ARSubsystems;
 
 public class ProgramManager : MonoBehaviour
 {
+
+    public delegate void ColorChanged();    //Цвет изменен.
+    public ColorChanged colorChangedDel;    //Экземпляр делегата.
+
     /*Scripts.*/
     private Rotation rotationScript;
     private Deletion deletetionScript;
@@ -48,9 +52,12 @@ public class ProgramManager : MonoBehaviour
     //Должен ли быть удален объект.
     public bool deletable;
 
+    private DialogColorChange dialogColorChangeScript;
+
     // Start is called before the first frame update
     void Start()
     {
+        colorChangedDel += ChangeColorObject;
         hits = new List<ARRaycastHit>();
         rotationScript = FindObjectOfType<Rotation>();
         deletetionScript = FindObjectOfType<Deletion>();
@@ -70,7 +77,7 @@ public class ProgramManager : MonoBehaviour
         {
             ShowMarkerToSetObject();
         }
-        ChangeColorObject();
+        OpenChangeColorDialog();
         RotateObject();
         DeleteObject();
         MoveObject();
@@ -305,14 +312,8 @@ public class ProgramManager : MonoBehaviour
     }
 
 
-    public Button mater;
-
-    private MaterialSetterButton materialSetterButtonScript;
-
-    /// <summary>
-    /// Функция для изменения цвета на объекте.
-    /// </summary>
-    private void ChangeColorObject()
+    public Transform colorPan;
+    private void OpenChangeColorDialog()
     {
         if (Input.touchCount == 1 && !rotatable && !deletable)
         {
@@ -330,9 +331,11 @@ public class ProgramManager : MonoBehaviour
                 //Если видим объект и засекли его, то меняем тег.
                 if (Physics.Raycast(ray, out hitObject))
                 {
-                    //Instantiate(mater, GameObject.Find($"UIContainer").transform);
-
-                    //hitObject.collider.material = 
+                    privateHitObject = hitObject;
+                    colorPan.transform.gameObject.SetActive(true);
+                    dialogColorChangeScript = FindObjectOfType<DialogColorChange>();
+                    dialogColorChangeScript.StartThis();
+                    //hitObject.collider.GetComponent<MeshRenderer>().material = materialSetterButtonScript.Material;
                     //if (hitObject.collider.CompareTag("Unselected"))
                     //{
                     //    hitObject.collider.gameObject.tag = "Selected";
@@ -340,5 +343,17 @@ public class ProgramManager : MonoBehaviour
                 }
             }
         }
+    }
+    public Text txt;
+    private MaterialSetterButton materialSetterButtonScript;
+    private RaycastHit privateHitObject;
+    /// <summary>
+    /// Функция для изменения цвета на объекте.
+    /// </summary>
+    private void ChangeColorObject()
+    {
+        Debug.Log("called");
+        txt.text = "CAAAALED";
+        privateHitObject.collider.GetComponent<MeshRenderer>().material = materialSetterButtonScript.Material;
     }
 }
