@@ -1,0 +1,11 @@
+Model Information:
+* title:	Chair Wood
+* source:	https://sketchfab.com/3d-models/chair-wood-f9bc2e1530734499bb1c500421f6baa4
+* author:	VinhTran (https://sketchfab.com/vacs.vinhtd)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Chair Wood" (https://sketchfab.com/3d-models/chair-wood-f9bc2e1530734499bb1c500421f6baa4) by VinhTran (https://sketchfab.com/vacs.vinhtd) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -5,29 +5,39 @@ using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
-
 public class ProgramManager : MonoBehaviour
 {
+    /*Scripts.*/
+    private Rotation rotationScript;
+    private Deletion deletetionScript;
+    private ARRaycastManager ARRaycastManagerScript;
+
+    //Префаб маркера для размещения на сцене.
     [Header("Put your planemarker here.")]
     [SerializeField]
     private GameObject planeMarkerPrefab;
-    private ARRaycastManager ARRaycastManagerScript;
 
+    //Позиция касания.
     private Vector2 touchPos;
 
+    //Объект для спавна.
     public GameObject objToSpawn;
 
+    //Выбирается объект.
     public bool isChoosing;
 
+    //ScrollView - его скрываю при размещении и вначале.
     [Header("Put your ScrollView here.")]
     public GameObject scrollView;
 
+    //Главная камера сцены.
     [SerializeField]
     private Camera ARCamera;
 
     //Сюда попадают объекты, которые встречает луч.
-    List<ARRaycastHit> hits = new List<ARRaycastHit>();
+    List<ARRaycastHit> hits;
 
+    //Выбранный объект.
     private GameObject selectedObject;
 
     // Для изменения угла по У.
@@ -41,14 +51,16 @@ public class ProgramManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        hits = new List<ARRaycastHit>();
         rotationScript = FindObjectOfType<Rotation>();
         deletetionScript = FindObjectOfType<Deletion>();
+        materialSetterButtonScript = FindObjectOfType<MaterialSetterButton>();
         scrollView.SetActive(false);
 
         //Находим скрипт.
         ARRaycastManagerScript = FindObjectOfType<ARRaycastManager>();
 
-        //planeMarkerPrefab.SetActive(false);
+        planeMarkerPrefab.SetActive(false);
     }
 
     // Update is called once per frame
@@ -58,12 +70,16 @@ public class ProgramManager : MonoBehaviour
         {
             ShowMarkerToSetObject();
         }
+        ChangeColorObject();
         RotateObject();
         DeleteObject();
         MoveObject();
         ScaleObject();
     }
 
+    /// <summary>
+    /// Метод для показа маркера - точки, куда будет ставиться объект.
+    /// </summary>
     private void ShowMarkerToSetObject()
     {
         //Создаем луч, он будет с центра экрана.
@@ -87,7 +103,6 @@ public class ProgramManager : MonoBehaviour
             planeMarkerPrefab.SetActive(false);
         }
     }
-
 
     /// <summary>
     /// Метод для перемещения объекта по сцене с помощью зажатого пальца.
@@ -135,7 +150,6 @@ public class ProgramManager : MonoBehaviour
         }
     }
 
-    private Rotation rotationScript;
     /// <summary>
     /// Метод для вращения объекта на сцене.
     /// </summary>
@@ -215,8 +229,6 @@ public class ProgramManager : MonoBehaviour
         }
     }
 
-    private Deletion deletetionScript;
-
     /// <summary>
     /// Удаление объекта.
     /// </summary>
@@ -247,7 +259,6 @@ public class ProgramManager : MonoBehaviour
             }
         }
     }
-
 
     /// <summary>
     /// Функция изменения размеров объекта.
@@ -288,6 +299,44 @@ public class ProgramManager : MonoBehaviour
                     {
                         selectedObject.transform.localScale = new Vector3(xVal - xVal * 0.05f, yVal - yVal * 0.05f, zVal - zVal * 0.05f);
                     }
+                }
+            }
+        }
+    }
+
+
+    public Button mater;
+
+    private MaterialSetterButton materialSetterButtonScript;
+
+    /// <summary>
+    /// Функция для изменения цвета на объекте.
+    /// </summary>
+    private void ChangeColorObject()
+    {
+        if (Input.touchCount == 1 && !rotatable && !deletable)
+        {
+            Touch touch = Input.GetTouch(0);
+            touchPos = touch.position;
+
+            //Тут выбираем обхект.
+            if (touch.phase == TouchPhase.Stationary)
+            {
+                Ray ray = ARCamera.ScreenPointToRay(touch.position);
+
+                //Какие объекты пересек луч.
+                RaycastHit hitObject;
+
+                //Если видим объект и засекли его, то меняем тег.
+                if (Physics.Raycast(ray, out hitObject))
+                {
+                    //Instantiate(mater, GameObject.Find($"UIContainer").transform);
+
+                    //hitObject.collider.material = 
+                    //if (hitObject.collider.CompareTag("Unselected"))
+                    //{
+                    //    hitObject.collider.gameObject.tag = "Selected";
+                    //}
                 }
             }
         }

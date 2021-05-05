@@ -1,0 +1,11 @@
+Model Information:
+* title:	Commode
+* source:	https://sketchfab.com/3d-models/commode-77f762f4e72d4c1abb08ebdfc3f2f350
+* author:	Grisha (https://sketchfab.com/grisha999871)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Commode" (https://sketchfab.com/3d-models/commode-77f762f4e72d4c1abb08ebdfc3f2f350) by Grisha (https://sketchfab.com/grisha999871) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

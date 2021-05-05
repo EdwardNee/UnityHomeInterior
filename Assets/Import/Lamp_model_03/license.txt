@@ -1,0 +1,11 @@
+Model Information:
+* title:	Lamp model 03
+* source:	https://sketchfab.com/3d-models/lamp-model-03-e84ca2081f16407abbe7194441ce2005
+* author:	Anrasahe (https://sketchfab.com/Anrasahe)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Lamp model 03" (https://sketchfab.com/3d-models/lamp-model-03-e84ca2081f16407abbe7194441ce2005) by Anrasahe (https://sketchfab.com/Anrasahe) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
