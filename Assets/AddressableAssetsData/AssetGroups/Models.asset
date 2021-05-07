@@ -17,41 +17,41 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: a3300d72b06c2664f8b583b016af411e
   m_SerializeEntries:
-  - m_GUID: d4df38bb14ed54040b4cd1d741d6a85a
-    m_Address: Assets/AddressableAssets/furniture/sofa.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - furniture
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 2f0810ca3f1c008439d9425734f24975
-    m_Address: Assets/AddressableAssets/furniture/target.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - furniture
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
   - m_GUID: 7128c60f6498f6e4ab69f4edbf0bb284
     m_Address: Assets/AddressableAssets/furniture/chair.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - furniture
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 11400000, guid: 7128c60f6498f6e4ab69f4edbf0bb284, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 7128c60f6498f6e4ab69f4edbf0bb284, type: 2}
+  - m_GUID: d4df38bb14ed54040b4cd1d741d6a85a
+    m_Address: Assets/AddressableAssets/furniture/sofa.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - furniture
+    m_MainAsset: {fileID: 11400000, guid: d4df38bb14ed54040b4cd1d741d6a85a, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: d4df38bb14ed54040b4cd1d741d6a85a, type: 2}
   - m_GUID: d20e8e0fb2652984b9fe65654ba44b6c
     m_Address: Assets/AddressableAssets/furniture/table.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - furniture
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 11400000, guid: d20e8e0fb2652984b9fe65654ba44b6c, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: d20e8e0fb2652984b9fe65654ba44b6c, type: 2}
+  - m_GUID: 2f0810ca3f1c008439d9425734f24975
+    m_Address: Assets/AddressableAssets/furniture/target.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - furniture
+    m_MainAsset: {fileID: 11400000, guid: 2f0810ca3f1c008439d9425734f24975, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 2f0810ca3f1c008439d9425734f24975, type: 2}
   - m_GUID: ac9719c3e2654a94e9394cbe557da63f
     m_Address: Assets/AddressableAssets/furniture/catapult.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - furniture
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 11400000, guid: ac9719c3e2654a94e9394cbe557da63f, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: ac9719c3e2654a94e9394cbe557da63f, type: 2}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: ff7540b33720b074396e2368e15022d1, type: 2}
   m_SchemaSet:

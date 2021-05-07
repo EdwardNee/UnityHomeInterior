@@ -108,6 +108,8 @@ public class ProgramManager : MonoBehaviour
             //—тавим там, где луч пересекс€ с плоскостью
             try
             {
+                //Instantiate(objToSpawn, hits[0].pose.position, objToSpawn.transform.rotation);
+                txt.text += $"\nsw {hits[0].pose.position} {(hits == null).ToString()}\n";
                 PhotonNetwork.Instantiate(objToSpawn.name, hits[0].pose.position, objToSpawn.transform.rotation);
             }
             catch (System.Exception ex)
@@ -268,7 +270,8 @@ public class ProgramManager : MonoBehaviour
                 {
                     //if (hitObject.collider.CompareTag("Unselected"))  
                     //{
-                    GameObject.DestroyImmediate(hitObject.collider.gameObject);
+                    //GameObject.DestroyImmediate(hitObject.collider.gameObject);
+                    PhotonNetwork.Destroy(hitObject.collider.gameObject);
                     deletetionScript.DeleteAction();
                     //}
                 }

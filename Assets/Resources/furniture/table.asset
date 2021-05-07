@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a968b2178cb8a9346a0d46f2161c3d33, type: 3}
   m_Name: table
   m_EditorClassIdentifier: 
-  elementPrefab: {fileID: 1049962234500816739, guid: 23173f1f66fa4194aa05db65753c5464, type: 3}
+  elementPrefab: {fileID: 7240823184268472983, guid: 04a6359ffcdd57b47b28cd7d77ee7f9c, type: 3}
   elementSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
