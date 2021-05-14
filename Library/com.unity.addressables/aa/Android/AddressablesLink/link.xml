@@ -26,9 +26,9 @@
   </assembly>
   <assembly fullname="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="Element" preserve="all" />
+    <type fullname="PrefabController" preserve="all" />
   </assembly>
   <assembly fullname="PhotonUnityNetworking, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-    <type fullname="Photon.Pun.PhotonRigidbodyView" preserve="all" />
     <type fullname="Photon.Pun.PhotonView" preserve="all" />
     <type fullname="Photon.Pun.PhotonTransformView" preserve="all" />
   </assembly>

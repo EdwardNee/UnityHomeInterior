@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Менеджер лобби отвечает за подключение к серверу Photon.
+/// </summary>
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
     [SerializeField]
@@ -32,11 +35,17 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         logText.text += $"\n{message}";
     }
 
+    /// <summary>
+    /// Срабатывает на кнопку Создать комнату.
+    /// </summary>
     public void CreateRoom()
     {
         PhotonNetwork.CreateRoom(null, new Photon.Realtime.RoomOptions { MaxPlayers = 2 });
     }
 
+    /// <summary>
+    /// Срабатывает на кнопку Присоединиться к комнате.
+    /// </summary>
     public void JoinRoom()
     {
         PhotonNetwork.JoinRandomRoom();

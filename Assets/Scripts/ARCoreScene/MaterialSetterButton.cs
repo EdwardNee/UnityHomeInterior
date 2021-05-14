@@ -3,18 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Скрипт находится на кнопке для выбора цвета. У каждой из кнопок есть индекс цвета,
+/// по которой она обращается к MaterialsColor через индексатор.
+/// </summary>
 public class MaterialSetterButton : MonoBehaviour
 {
+    // Айди выбранного материала.
     [SerializeField]
-    private Material material;
+    public int materialId;
+    //Цвет кнопки для материала.
     [SerializeField]
     private Color color;
+    //Название материала.
     [SerializeField]
     private string text;
+    //Кнопка материала.
     private Button btn;
-    private static Material settingMaterial;
-    private ProgramManager programManagerScript;
 
+    //Установленный материал.
+    private static Material settingMaterial;
+    //Объект скрипта ProgramManager.
+    private ProgramManager programManagerScript;
+    //Массив всех материалов.
+    private Material[] materials;
+
+    /// <summary>
+    /// Конструктор объекта класса.
+    /// </summary>
+    public static MaterialSetterButton Instance
+    {
+        get; private set;
+    }
+
+    /// <summary>
+    /// Свойство для установленного материала.
+    /// </summary>
     public static Material Material
     {
         get
@@ -26,8 +50,11 @@ public class MaterialSetterButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Instance = this;
         programManagerScript = FindObjectOfType<ProgramManager>();
-
+        MaterialsColor materialsColorScript = MaterialsColor.Instance;
+        Debug.Log(materialsColorScript == null);
+        materials = materialsColorScript.Materials;
         //Получаем кнопку, на которой скрипт, далее изменяем переданные свойства.
         btn = GetComponent<Button>();
         btn.GetComponentInChildren<Text>().text = text;
@@ -40,10 +67,14 @@ public class MaterialSetterButton : MonoBehaviour
     {
     }
 
+    /// <summary>
+    /// Функция установки индекса материала и вызова события colorChangedDel.
+    /// </summary>
     private void SetMaterialFunc()
     {
-        settingMaterial = material;
-        Debug.Log(Material);
+        settingMaterial = materials[materialId];
+        PrefabController.current_mat = materialId;
+        Debug.Log(materialId);
         programManagerScript.colorChangedDel?.Invoke();
     }
 }

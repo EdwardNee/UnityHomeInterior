@@ -5,28 +5,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Отвечает за соединение к комнатам Photon.
+/// </summary>
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
 
     public override void OnJoinedRoom()
     {
-        //Текущий игрок покидает комнату.
-        SceneManager.LoadScene(0);
+        Debug.Log("OnJoinedRoomOnJoinedRoom");
+        //Текущий игрок комнату.
+        //SceneManager.LoadScene(0);
     }
 
+    /// <summary>
+    /// Срабатывает при нажатии на кнопку Выйти из комнаты.
+    /// </summary>
     public void LeaveRoom()
     {
+        GetButtonsAnimator animScript = GetButtonsAnimator.Instace;
+        LobbyManagerUnity.IsNetwork = false;
+        animScript.create.interactable = !LobbyManagerUnity.IsNetwork;
+        animScript.join.interactable = !LobbyManagerUnity.IsNetwork;
+        animScript.leave.interactable = LobbyManagerUnity.IsNetwork;
         PhotonNetwork.LeaveRoom();
     }
 

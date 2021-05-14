@@ -6,16 +6,23 @@ using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
+/// <summary>
+/// Основной программный код. Вызов основных функций.
+/// </summary>
 public class ProgramManager : MonoBehaviour
 {
-
-    public delegate void ColorChanged();    //Цвет изменен.
-    public ColorChanged colorChangedDel;    //Экземпляр делегата.
+    //Тип-делегат цвет изменен.
+    public delegate void ColorChanged();
+    //Экземпляр делегата.
+    public ColorChanged colorChangedDel;
 
     /*Scripts.*/
     private Rotation rotationScript;
     private Deletion deletetionScript;
+    private DialogColorChange dialogColorChangeScript;
     private ARRaycastManager ARRaycastManagerScript;
+    private MaterialSetterButton materialSetterButtonScript;
+    private HintsScript hintsScript;
 
     //Префаб маркера для размещения на сцене.
     [Header("Put your planemarker here.")]
@@ -40,7 +47,7 @@ public class ProgramManager : MonoBehaviour
     private Camera ARCamera;
 
     //Сюда попадают объекты, которые встречает луч.
-    List<ARRaycastHit> hits;
+    private List<ARRaycastHit> hits;
 
     //Выбранный объект.
     private GameObject selectedObject;
@@ -53,27 +60,50 @@ public class ProgramManager : MonoBehaviour
     //Должен ли быть удален объект.
     public bool deletable;
 
-    private DialogColorChange dialogColorChangeScript;
+    //Элементы, которые пересек луч.
+    private RaycastHit privateHitObject;
+
+    /// <summary>
+    /// Конструктор объекта класса.
+    /// </summary>
+    public static ProgramManager Instance
+    {
+        get; private set;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        Instance = this;
         colorChangedDel += ChangeColorObject;
         hits = new List<ARRaycastHit>();
-        rotationScript = FindObjectOfType<Rotation>();
-        deletetionScript = FindObjectOfType<Deletion>();
-        materialSetterButtonScript = FindObjectOfType<MaterialSetterButton>();
+        rotationScript = Rotation.Instance;
+        deletetionScript = Deletion.Instance;
+        materialSetterButtonScript = MaterialSetterButton.Instance;
         scrollView.SetActive(false);
 
         //Находим скрипт.
         ARRaycastManagerScript = FindObjectOfType<ARRaycastManager>();
-
         planeMarkerPrefab.SetActive(false);
+
+
+
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (hintsScript == null)
+        {
+            hintsScript = HintsScript.Instance;
+        }
+
+        if (hintsScript != null && HintsScript.hintId < 1)
+        {
+            hintsScript.DisplayHint("Для начала работы с интерфейсом НАЖМИ на меню три точки справа сверху.", 1);
+        }
         if (isChoosing)
         {
             ShowMarkerToSetObject();
@@ -90,6 +120,12 @@ public class ProgramManager : MonoBehaviour
     /// </summary>
     private void ShowMarkerToSetObject()
     {
+        if (HintsScript.hintId < 3)
+        {
+            string hint = "Камера ищет плоскости. В помещении должно быть достаточно света." +
+                " Поводи устройством по комнате для нахождения места, куда можно установить элемент мебели.\n";
+            hintsScript.DisplayHint(hint, 3);
+        }
         //Создаем луч, он будет с центра экрана.
         Vector2 vec = new Vector2(Screen.width / 2, Screen.height / 2);
         //Помещаем объекты в List<> hits, фиксируем плоскости.
@@ -100,6 +136,13 @@ public class ProgramManager : MonoBehaviour
             //Присваиваем значению planeMarker где луч пересекся с плоскостью.
             planeMarkerPrefab.transform.position = hits[0].pose.position;
             planeMarkerPrefab.SetActive(true);
+
+            if (HintsScript.hintId == 3)
+            {
+                string hint = "Найдена плоскость. Вы видите маркер на полу." +
+                    " Это точка, на которой будет установлен объект мебели. Коснитесь свободной области на экране.\n";
+                hintsScript.DisplayHint(hint, 3);
+            }
         }
 
         //Ставим объект. Работает только при удержании
@@ -108,9 +151,17 @@ public class ProgramManager : MonoBehaviour
             //Ставим там, где луч пересекся с плоскостью
             try
             {
-                //Instantiate(objToSpawn, hits[0].pose.position, objToSpawn.transform.rotation);
+
                 txt.text += $"\nsw {hits[0].pose.position} {(hits == null).ToString()}\n";
-                PhotonNetwork.Instantiate(objToSpawn.name, hits[0].pose.position, objToSpawn.transform.rotation);
+                //Если есть подключение по сети, то будем ставить через фотон, если нет - локально.
+                if (LobbyManagerUnity.IsNetwork)
+                {
+                    PhotonNetwork.Instantiate(objToSpawn.name, hits[0].pose.position, objToSpawn.transform.rotation);
+                }
+                else
+                {
+                    Instantiate(objToSpawn, hits[0].pose.position, objToSpawn.transform.rotation);
+                }
             }
             catch (System.Exception ex)
             {
@@ -119,6 +170,14 @@ public class ProgramManager : MonoBehaviour
             //Instantiate(objToSpawn, hits[0].pose.position, objToSpawn.transform.rotation);
             isChoosing = false;
             planeMarkerPrefab.SetActive(false);
+            if (HintsScript.hintId == 3)
+            {
+                hintsScript.Off();
+
+                string hint = "Элемент был установлен. Теперь можно его ВРАЩАТЬ свайпами пальцев влево и вправо, УДАЛИТЬ, коснувшись на объект. Для этих действий нужно нажать соответствующие кнопки.\n" +
+                    "Изменить размер можно двумя пальцами. Изменить цвет - ЗАЖАТЬ палец на мебели.\n Нажми СКРЫТЬ для закрытия подсказки.";
+                hintsScript.DisplayHint(hint, 4);
+            }
         }
     }
 
@@ -175,40 +234,6 @@ public class ProgramManager : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            //Rotation by two fingers.
-            //Touch touch = Input.GetTouch(0);
-            //touchPos = touch.position;
-
-            //if (Input.touchCount == 2)
-            //{
-            //    //Берем кооррдинаты пальцев.
-            //    Touch f1 = Input.touches[0];
-            //    Touch f2 = Input.touches[1];
-
-            //    //Если какой-то из пальцев движется.
-            //    if (f1.phase == TouchPhase.Moved || f2.phase == TouchPhase.Moved)
-            //    {
-            //        float fingersDist = Vector2.Distance(f1.position, f2.position);
-            //        //Расстояние до касания.
-            //        float prevFingersDist = Vector2.Distance(f1.position - f1.deltaPosition, f2.position - f2.deltaPosition);
-            //        float delta = fingersDist - prevFingersDist;
-
-            //        if (delta != 0)
-            //        {
-            //            //Изменяем дельту на 0.1.
-            //            delta *= delta > 0 ? 0.01f : -0.01f;
-            //        }
-            //        else if (delta == 0)
-            //        {
-            //            //Просто обнуляем значения.
-            //            delta = fingersDist = 0;
-            //        }
-
-            //        YRotQuat = Quaternion.Euler(0f, -f1.deltaPosition.x * delta, 0f);
-            //        selectedObject.transform.rotation = YRotQuat * selectedObject.transform.rotation;
-            //    }
-            //}
-
             Touch touch = Input.GetTouch(0);
             touchPos = touch.position;
             if (touch.phase == TouchPhase.Began)
@@ -324,7 +349,12 @@ public class ProgramManager : MonoBehaviour
     }
 
 
+    //Панель с выбором цвета.
     public Transform colorPan;
+
+    /// <summary>
+    /// Открывает окно с выбором цвета объекта.
+    /// </summary>
     private void OpenChangeColorDialog()
     {
         if (Input.touchCount == 1 && !rotatable && !deletable)
@@ -345,8 +375,8 @@ public class ProgramManager : MonoBehaviour
                 {
                     privateHitObject = hitObject;
                     colorPan.transform.gameObject.SetActive(true);
-                    dialogColorChangeScript = FindObjectOfType<DialogColorChange>();
-                    dialogColorChangeScript.StartThis();
+                    dialogColorChangeScript = DialogColorChange.Instance;
+                    dialogColorChangeScript.OpenColorChooser();
                     //hitObject.collider.GetComponent<MeshRenderer>().material = materialSetterButtonScript.Material;
                     //if (hitObject.collider.CompareTag("Unselected"))
                     //{
@@ -357,22 +387,35 @@ public class ProgramManager : MonoBehaviour
         }
     }
     public Text txt;
-    private MaterialSetterButton materialSetterButtonScript;
-    private RaycastHit privateHitObject;
 
     /// <summary>
     /// Функция для изменения цвета на объекте.
     /// </summary>
     private void ChangeColorObject()
     {
-        Transform[] transformArray = privateHitObject.collider.gameObject.GetComponentsInChildren<Transform>();
-        foreach (var e in transformArray)
+        Collider hittedObj = privateHitObject.collider;
+        if (hittedObj != null)
         {
-            if (e.name.Equals("obj"))
+            PrefabController.objName = hittedObj.gameObject.name;
+            PrefabController.HittedObj = hittedObj.gameObject;
+
+            //Если нет подключения по интернету.
+            if (!LobbyManagerUnity.IsNetwork)
             {
-                e.GetComponent<MeshRenderer>().material = MaterialSetterButton.Material;
-                Debug.Log(e.GetComponent<MeshRenderer>().materials[0] + " set");
+                Transform[] transformArray = hittedObj.gameObject.GetComponentsInChildren<Transform>();
+                foreach (var e in transformArray)
+                {
+                    if (e.name.StartsWith("obj"))   //Equals.
+                    {
+                        e.GetComponent<MeshRenderer>().material = MaterialSetterButton.Material;
+                        Debug.Log(e.GetComponent<MeshRenderer>().materials[0] + " set");
+                    }
+                }
             }
+        }
+        else
+        {
+            Debug.Log("ProgramManager.ChangeColorObject: privateHitObject.collider is NULL.");
         }
     }
 }

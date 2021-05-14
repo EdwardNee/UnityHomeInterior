@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Unselected
   - Selected
+  - Bullet
+  - Logger
   layers:
   - Default
   - TransparentFX

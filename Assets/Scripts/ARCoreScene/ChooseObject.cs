@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Скрипт для выбора элемента мебели для установки.
+/// </summary>
 public class ChooseObject : MonoBehaviour
 {
+    //Экземпляр ProgramManager.
     private ProgramManager programManagerScript;
 
+    //Кнопка мебели.
     private Button button;
+    //Префаб выбранного объекта.
     public GameObject chosedObj;
 
     // Start is called before the first frame update
     void Start()
     {
-        programManagerScript = FindObjectOfType<ProgramManager>();
+        programManagerScript = ProgramManager.Instance;
 
         button = GetComponent<Button>();
         button.onClick.AddListener(ChooseObjectFunc);
@@ -24,6 +30,9 @@ public class ChooseObject : MonoBehaviour
     {
     }
 
+    /// <summary>
+    /// Срабатывает при нажатии на кнопку элемента мебели.
+    /// </summary>
     private void ChooseObjectFunc()
     {
         //Присваиваем тому объекту тот, что выбрали.

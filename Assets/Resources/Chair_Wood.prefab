@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 8300489978687194489}
   - component: {fileID: 7998432780844078226}
   - component: {fileID: 5401512981520727946}
+  - component: {fileID: -7406752693079365682}
   m_Layer: 0
   m_Name: Chair_Wood
-  m_TagString: Untagged
+  m_TagString: Unselected
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,6 +90,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 5401512981520727946}
+  - {fileID: -7406752693079365682}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -108,6 +110,20 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 1
   m_UseLocal: 1
+--- !u!114 &-7406752693079365682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759494080791610090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2105c1f9bb5514cb62244eea9f36ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 759494080791610090}
+  txt: {fileID: 0}
 --- !u!1 &882734877205246048
 GameObject:
   m_ObjectHideFlags: 0

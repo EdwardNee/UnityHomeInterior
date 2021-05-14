@@ -3,11 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Скрипт для кнопки удаления.
+/// </summary>
 public class Deletion : MonoBehaviour
 {
+    //Кнопка удаления.
     public Button deleteBtn;
+    //Объект скрипта ProgramManager.
     private ProgramManager programManagerScript;
+    //Перечеркнутая линия.
     private GameObject line;
+
+    /// <summary>
+    /// Конструктор объекта класса.
+    /// </summary>
+    public static Deletion Instance
+    {
+        get; private set;
+    }
 
     // Start is called before the first frame update
     void Start()

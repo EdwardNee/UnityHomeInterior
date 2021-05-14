@@ -4,10 +4,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Менеджер-класс создания и присоединения к комнате.
+/// </summary>
 public class LobbyManagerUnity : MonoBehaviourPunCallbacks
 {
+    //Используется ли подключение или нет.
+    private static bool isNetwork = false;
+
+    //Текст логирования.
     [SerializeField]
     private Text logText;
+
+    /// <summary>
+    /// Свойство используется ли подключение или нет
+    /// </summary>
+    public static bool IsNetwork
+    {
+        get
+        {
+            return isNetwork;
+        }
+        set
+        {
+            isNetwork = value;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +66,7 @@ public class LobbyManagerUnity : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        IsNetwork = true;
         Log("Joined the room");
     }
 }

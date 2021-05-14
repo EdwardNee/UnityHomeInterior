@@ -256,9 +256,10 @@ GameObject:
   - component: {fileID: 3107928048002437549}
   - component: {fileID: 4004548874185855907}
   - component: {fileID: 6471039627823165524}
+  - component: {fileID: -7519366096959706792}
   m_Layer: 0
   m_Name: Modern_Couch
-  m_TagString: Untagged
+  m_TagString: Unselected
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -329,6 +330,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 6471039627823165524}
+  - {fileID: -7519366096959706792}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -348,3 +350,17 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 1
   m_UseLocal: 1
+--- !u!114 &-7519366096959706792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576551286356761589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2105c1f9bb5514cb62244eea9f36ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7576551286356761589}
+  txt: {fileID: 0}

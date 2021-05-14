@@ -256,9 +256,10 @@ GameObject:
   - component: {fileID: 5255093879475432889}
   - component: {fileID: 716101109560587122}
   - component: {fileID: 6668606179302793918}
+  - component: {fileID: 6922628192242408411}
   m_Layer: 0
   m_Name: Glass_Table
-  m_TagString: Untagged
+  m_TagString: Unselected
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -307,8 +308,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1851498, y: 0.8774526, z: 1.9191966}
-  m_Center: {x: 0.013472021, y: 0.53561234, z: -0.0048309267}
+  m_Size: {x: 1.1851498, y: 0.9615594, z: 1.9191966}
+  m_Center: {x: 0.013472021, y: 0.49355894, z: -0.0048309565}
 --- !u!114 &716101109560587122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,6 +330,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 6668606179302793918}
+  - {fileID: 6922628192242408411}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -348,3 +350,17 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 1
   m_UseLocal: 1
+--- !u!114 &6922628192242408411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240823184268472983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2105c1f9bb5514cb62244eea9f36ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7240823184268472983}
+  txt: {fileID: 0}

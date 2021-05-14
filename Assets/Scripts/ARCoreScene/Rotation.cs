@@ -3,11 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Скрипт, отвечающий за кнопку вращения.
+/// </summary>
 public class Rotation : MonoBehaviour
 {
+    //Кнопка вращения.
     public Button rotateBtn;
+    //Объект скрипта ProgramManager.
     private ProgramManager programManagerScript;
+    //Перечеркнутая линия.
     private GameObject line;
+
+    /// <summary>
+    /// Конструктор объекта класса.
+    /// </summary>
+    public static Rotation Instance
+    {
+        get; private set;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +37,9 @@ public class Rotation : MonoBehaviour
     {
     }
 
+    /// <summary>
+    /// Устанавливает флаги для вращения и делает линию активной.
+    /// </summary>
     public void RotateAction()
     {
         Debug.Log("Rotate button");
