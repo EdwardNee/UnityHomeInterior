@@ -85,11 +85,6 @@ public class ProgramManager : MonoBehaviour
         //Находим скрипт.
         ARRaycastManagerScript = FindObjectOfType<ARRaycastManager>();
         planeMarkerPrefab.SetActive(false);
-
-
-
-
-
     }
 
     // Update is called once per frame
@@ -351,7 +346,9 @@ public class ProgramManager : MonoBehaviour
 
     //Панель с выбором цвета.
     public Transform colorPan;
-
+    private float timePressed = 0f;
+    private float timeLastPress = 0f;
+    private float threshold = 1f;
     /// <summary>
     /// Открывает окно с выбором цвета объекта.
     /// </summary>
@@ -361,29 +358,64 @@ public class ProgramManager : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
             touchPos = touch.position;
-
-            //Тут выбираем обхект.
-            if (touch.phase == TouchPhase.Stationary)
+            if (touch.phase == TouchPhase.Began)
             {
-                Ray ray = ARCamera.ScreenPointToRay(touch.position);
+                //Палец только появился на экране.
+                timePressed = Time.time - timeLastPress;
+            }
 
-                //Какие объекты пересек луч.
-                RaycastHit hitObject;
-
-                //Если видим объект и засекли его, то меняем тег.
-                if (Physics.Raycast(ray, out hitObject))
+            if (touch.phase == TouchPhase.Ended)
+            { // Убирает палец.
+                timeLastPress = Time.time;
+                //Если превысили порог.
+                if (timePressed > threshold)
                 {
-                    privateHitObject = hitObject;
-                    colorPan.transform.gameObject.SetActive(true);
-                    dialogColorChangeScript = DialogColorChange.Instance;
-                    dialogColorChangeScript.OpenColorChooser();
-                    //hitObject.collider.GetComponent<MeshRenderer>().material = materialSetterButtonScript.Material;
-                    //if (hitObject.collider.CompareTag("Unselected"))
-                    //{
-                    //    hitObject.collider.gameObject.tag = "Selected";
-                    //}
+                    Ray ray = ARCamera.ScreenPointToRay(touch.position);
+
+                    //Какие объекты пересек луч.
+                    RaycastHit hitObject;
+
+                    //Если видим объект и засекли его, то меняем тег.
+                    if (Physics.Raycast(ray, out hitObject))
+                    {
+                        privateHitObject = hitObject;
+                        colorPan.transform.gameObject.SetActive(true);
+                        dialogColorChangeScript = DialogColorChange.Instance;
+                        dialogColorChangeScript.OpenColorChooser();
+                        //hitObject.collider.GetComponent<MeshRenderer>().material = materialSetterButtonScript.Material;
+                        //if (hitObject.collider.CompareTag("Unselected"))
+                        //{
+                        //    hitObject.collider.gameObject.tag = "Selected";
+                        //}
+                    }
                 }
             }
+
+            //Touch touch = Input.GetTouch(0);
+            //touchPos = touch.position;
+
+            ////Тут выбираем обхект.
+            //if (touch.phase == TouchPhase.Stationary)
+            //{
+            //    Ray ray = ARCamera.ScreenPointToRay(touch.position);
+
+            //    //Какие объекты пересек луч.
+            //    RaycastHit hitObject;
+
+            //    //Если видим объект и засекли его, то меняем тег.
+            //    if (Physics.Raycast(ray, out hitObject))
+            //    {
+            //        privateHitObject = hitObject;
+            //        colorPan.transform.gameObject.SetActive(true);
+            //        dialogColorChangeScript = DialogColorChange.Instance;
+            //        dialogColorChangeScript.OpenColorChooser();
+            //        //hitObject.collider.GetComponent<MeshRenderer>().material = materialSetterButtonScript.Material;
+            //        //if (hitObject.collider.CompareTag("Unselected"))
+            //        //{
+            //        //    hitObject.collider.gameObject.tag = "Selected";
+            //        //}
+            //    }
+            //}
         }
     }
     public Text txt;

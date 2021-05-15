@@ -8,8 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{73B223D7-C5E0-AF8D-A8B2-0981C905621C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -100,35 +99,34 @@
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Import\Bean_Bag\license.txt" />
-    <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
-    <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFFlipTexture.shader" />
-    <None Include="Assets\Photon\PhotonUnityNetworking\changelog.txt" />
-    <None Include="Assets\Import\Lamp_post\license.txt" />
-    <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFColorSpace.cginc" />
-    <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFPackOccMetalRough.shader" />
-    <None Include="Assets\Photon\PhotonLibs\WebSocket\websocket-sharp.dll" />
-    <None Include="Assets\Import\Lamp_model_03\license.txt" />
-    <None Include="Assets\Import\Old_Lamp\license.txt" />
-    <None Include="Assets\Import\otoman_balaj\license.txt" />
-    <None Include="Assets\Import\Chair_Wood\license.txt" />
-    <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\Newtonsoft.Json.dll" />
-    <None Include="Assets\Materials\Modern_Couch\license.txt" />
-    <None Include="Assets\Photon\PhotonLibs\changes-library.txt" />
-    <None Include="Assets\Photon\PhotonUnityNetworking\readme.txt" />
-    <None Include="Assets\Import\Stylized_Cupboard\license.txt" />
-    <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\SketchfabPlugin.dll" />
-    <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.dll" />
-    <None Include="Assets\Photon\PhotonLibs\Photon3Unity3D.dll" />
-    <None Include="Assets\Photon\PhotonLibs\Metro\Photon3Unity3D.dll" />
-    <None Include="Assets\Import\Loshadka._rocking_horse_wooden_toy\license.txt" />
-    <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\Ionic.Zip.Unity.dll" />
-    <None Include="Assets\Photon\PhotonLibs\Photon3Unity3D.xml" />
-    <None Include="Assets\Materials\Glass_Table\license.txt" />
-    <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFBumpToNormal.shader" />
-    <None Include="Assets\Photon\PhotonUnityNetworking\link.xml" />
-    <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\GLTFSerialization.dll" />
-    <None Include="ClassDiagram1.cd" />
+     <None Include="Assets\Import\Bean_Bag\license.txt" />
+     <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
+     <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFFlipTexture.shader" />
+     <None Include="Assets\Photon\PhotonUnityNetworking\changelog.txt" />
+     <None Include="Assets\Import\Lamp_post\license.txt" />
+     <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFColorSpace.cginc" />
+     <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFPackOccMetalRough.shader" />
+     <None Include="Assets\Photon\PhotonLibs\WebSocket\websocket-sharp.dll" />
+     <None Include="Assets\Import\Lamp_model_03\license.txt" />
+     <None Include="Assets\Import\Old_Lamp\license.txt" />
+     <None Include="Assets\Import\otoman_balaj\license.txt" />
+     <None Include="Assets\Import\Chair_Wood\license.txt" />
+     <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\Newtonsoft.Json.dll" />
+     <None Include="Assets\Materials\Modern_Couch\license.txt" />
+     <None Include="Assets\Photon\PhotonLibs\changes-library.txt" />
+     <None Include="Assets\Photon\PhotonUnityNetworking\readme.txt" />
+     <None Include="Assets\Import\Stylized_Cupboard\license.txt" />
+     <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\SketchfabPlugin.dll" />
+     <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.dll" />
+     <None Include="Assets\Photon\PhotonLibs\Photon3Unity3D.dll" />
+     <None Include="Assets\Photon\PhotonLibs\Metro\Photon3Unity3D.dll" />
+     <None Include="Assets\Import\Loshadka._rocking_horse_wooden_toy\license.txt" />
+     <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\Ionic.Zip.Unity.dll" />
+     <None Include="Assets\Photon\PhotonLibs\Photon3Unity3D.xml" />
+     <None Include="Assets\Materials\Glass_Table\license.txt" />
+     <None Include="Assets\Sketchfab For Unity\Dependencies\Shaders\GLTFBumpToNormal.shader" />
+     <None Include="Assets\Photon\PhotonUnityNetworking\link.xml" />
+     <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\GLTFSerialization.dll" />
     <Reference Include="UnityEngine">
       <HintPath>D:\Projects\Unity\2020.3.3f1\2020.3.3f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
