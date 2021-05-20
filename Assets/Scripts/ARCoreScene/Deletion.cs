@@ -67,15 +67,15 @@ public class Deletion : MonoBehaviour
     /// <param name="obj">Кнопка, которая будет увеличиваться при нажатии.</param>
     private IEnumerator ClickedCoroutine(Button obj)
     {
+        float xVal_p = obj.transform.localScale.x;
+        float yVal_p = obj.transform.localScale.y;
+        float zVal_p = obj.transform.localScale.z;
+        obj.transform.localScale = new Vector3(xVal_p + xVal_p * 0.1f, yVal_p + yVal_p * 0.1f, zVal_p + zVal_p * 0.1f);
         float xVal = obj.transform.localScale.x;
         float yVal = obj.transform.localScale.y;
         float zVal = obj.transform.localScale.z;
-        obj.transform.localScale = new Vector3(xVal + xVal * 0.1f, yVal + yVal * 0.1f, zVal + zVal * 0.1f);
-        xVal = obj.transform.localScale.x;
-        yVal = obj.transform.localScale.y;
-        zVal = obj.transform.localScale.z;
         yield return new WaitForSeconds(0.15f);
-        obj.transform.localScale = new Vector3(xVal - xVal * 0.1f, yVal - yVal * 0.1f, zVal - zVal * 0.1f);
+        obj.transform.localScale = new Vector3(xVal - xVal_p * 0.1f, yVal - yVal_p * 0.1f, zVal - zVal_p * 0.1f);
     }
 
     //Вызывается при уничтожении Monobehaviour.

@@ -151,7 +151,7 @@ public class ProgramManager : MonoBehaviour
             //Ставим там, где луч пересекся с плоскостью
             try
             {
-                txt.text += $"\nsw {hits[0].pose.position} {(hits == null).ToString()}\n";
+                //txt.text += $"\nsw {hits[0].pose.position} {(hits == null).ToString()}\n";
                 //objToSpawn.name += id;
                 //++id;
                 //Если есть подключение по сети, то будем ставить через фотон, если нет - локально.
@@ -166,7 +166,7 @@ public class ProgramManager : MonoBehaviour
             }
             catch (System.Exception ex)
             {
-                txt.text += $"\n{ex.Message}\n";
+                //txt.text += $"\n{ex.Message}\n";
             }
             //Instantiate(objToSpawn, hits[0].pose.position, objToSpawn.transform.rotation);
             isChoosing = false;
@@ -350,30 +350,13 @@ public class ProgramManager : MonoBehaviour
                     }
                     catch (System.Exception ex)
                     {
-                        txt.text = "txx" + ex.Message;
+                        //txt.text = "txx" + ex.Message;
                     }
 
                     //Берем размер объекта.
                     float xVal = selectedObject.transform.localScale.x;
                     float yVal = selectedObject.transform.localScale.y;
                     float zVal = selectedObject.transform.localScale.z;
-
-                    //Если расстояние между пальцами стало меньше, то объект уменьшаем, иначе увеличиваем.
-                    //Vector3 gameobjname = new Vector3();
-                    //try
-                    //{
-                    //    txt.text = "DDDDD";
-                    //    txt.text += dictOfElements.Count.ToString();
-                    //    foreach (var item in dictOfElements)
-                    //    {
-                    //        txt.text += item.Key;
-                    //    }
-                    //    gameobjname = dictOfElements[selectedObject.name.Replace("(Clone)", "")];
-                    //}
-                    //catch (System.Exception ex)
-                    //{
-                    //    txt.text += "DAD" + ex.Message;
-                    //}
 
                     if (delta > 0)
                     {
@@ -393,24 +376,15 @@ public class ProgramManager : MonoBehaviour
                     try
                     {
                         //var rend = selectedObject.GetComponent<BoxCollider>();
-                        txt.text += $"sizeee {selectedObject.name} {sizeN}";//{dictOfElements[selectedObject.name]}
+                        //txt.text += $"sizeee {selectedObject.name} {sizeN}";//{dictOfElements[selectedObject.name]}
                         var getCanvasWithSize = selectedObject.GetComponentInChildren<Transform>().Find("Cube/Canvas").GetComponentsInChildren<Text>();
                         getCanvasWithSize[0].text = System.String.Format("{0:f2}", sizeN.x) + " m";
                         getCanvasWithSize[1].text = System.String.Format("{0:f2}", sizeN.z) + " m";
                         getCanvasWithSize[2].text = System.String.Format("{0:f2}", sizeN.y) + " m"; 
-                        //var rectTrans = selectedObject.GetComponent<RectTransform>();
-                        //if (rectTrans != null)
-                        //{
-                        //    txt.text = $"size {rectTrans.rect.height.ToString()} {rectTrans.rect.width.ToString()}";
-                        //}
-                        //else
-                        //{
-                        //    txt.text = "NUUUUUULLL";
-                        //}
                     }
                     catch (System.Exception exx)
                     {
-                        txt.text += "TUT" + exx.Message;
+                        //txt.text += "TUT" + exx.Message;
                     }
                 }
             }

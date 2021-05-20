@@ -39,7 +39,7 @@ public class PrefabController : MonoBehaviourPun, IPunObservable
     // Start is called before the first frame update
     void Start()
     {
-        txt = GameObject.FindWithTag("Logger").GetComponent<Text>();
+        //txt = GameObject.FindWithTag("Logger").GetComponent<Text>();
         materials = MaterialsColor.Instance.Materials;
     }
 
@@ -60,18 +60,18 @@ public class PrefabController : MonoBehaviourPun, IPunObservable
     /// <param name="materialId">Индекс материала.</param>
     private void SetMaterial(int materialId)
     {
-        txt.text = "SETMATER" + current_mat;
+        //txt.text = "SETMATER" + current_mat;
         old_mat = current_mat = materialId;
 
         try
         {
-            txt.text += objName;
+            //txt.text += objName;
             var transformArray = GameObject.Find(objName).GetComponentsInChildren<Transform>();
 
             foreach (var e in transformArray)
             {
-                txt.text += e.name + " ";
-                if (e.name.Equals("obj"))
+                //txt.text += e.name + " ";
+                if (e.name.StartsWith("obj"))
                 {
                     e.GetComponent<MeshRenderer>().material = materials[materialId];
                 }
@@ -84,7 +84,7 @@ public class PrefabController : MonoBehaviourPun, IPunObservable
         }
         catch (System.Exception ex)
         {
-            txt.text += ex.Message + "\n";
+            //txt.text += ex.Message + "\n";
         }
     }
 

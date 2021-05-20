@@ -86,7 +86,7 @@ public class LoadAssetsData : MonoBehaviour
             var element = await Addressables.LoadAssetAsync<Element>(item).Task;
             loadingElements.Add(element);   //items
         }
-        txt.text += $"loadded {loadingElements.Count}"; 
+        //txt.text += $"loadded {loadingElements.Count}"; 
     }
 
 }
