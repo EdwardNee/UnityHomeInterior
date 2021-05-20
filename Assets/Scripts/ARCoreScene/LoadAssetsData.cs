@@ -31,6 +31,9 @@ public class LoadAssetsData : MonoBehaviour
     //Коллекция загружаемых элементов.
     private List<Element> loadingElements;
 
+
+    public Text txt;
+
     //Start is called before the first frame update
     private void Start()
     {
@@ -83,6 +86,7 @@ public class LoadAssetsData : MonoBehaviour
             var element = await Addressables.LoadAssetAsync<Element>(item).Task;
             loadingElements.Add(element);   //items
         }
+        txt.text += $"loadded {loadingElements.Count}"; 
     }
 
 }

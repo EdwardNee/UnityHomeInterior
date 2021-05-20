@@ -11,6 +11,8 @@ using UnityEngine.XR.ARSubsystems;
 /// </summary>
 public class ProgramManager : MonoBehaviour
 {
+    private static int id;
+
     //Тип-делегат цвет изменен.
     public delegate void ColorChanged();
     //Экземпляр делегата.
@@ -63,6 +65,8 @@ public class ProgramManager : MonoBehaviour
     //Элементы, которые пересек луч.
     private RaycastHit privateHitObject;
 
+    Dictionary<string, Vector3> dictOfElements;
+
     /// <summary>
     /// Конструктор объекта класса.
     /// </summary>
@@ -74,6 +78,7 @@ public class ProgramManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dictOfElements = new Dictionary<string, Vector3>();
         Instance = this;
         colorChangedDel += ChangeColorObject;
         hits = new List<ARRaycastHit>();
@@ -146,8 +151,9 @@ public class ProgramManager : MonoBehaviour
             //Ставим там, где луч пересекся с плоскостью
             try
             {
-
                 txt.text += $"\nsw {hits[0].pose.position} {(hits == null).ToString()}\n";
+                //objToSpawn.name += id;
+                //++id;
                 //Если есть подключение по сети, то будем ставить через фотон, если нет - локально.
                 if (LobbyManagerUnity.IsNetwork)
                 {
@@ -299,6 +305,16 @@ public class ProgramManager : MonoBehaviour
         }
     }
 
+
+    GameObject currObj;
+    GameObject oldObj;
+    Vector3 sizeN;
+    void init(float x, float y, float z, GameObject pref)
+    {
+        sizeN = new Vector3(x, y, z);
+        currObj = pref;
+    }
+
     /// <summary>
     /// Функция изменения размеров объекта.
     /// </summary>
@@ -324,19 +340,77 @@ public class ProgramManager : MonoBehaviour
                     float prevFingersDist = Vector2.Distance(f1.position - f1.deltaPosition, f2.position - f2.deltaPosition);
                     float delta = fingersDist - prevFingersDist;
 
+                    try
+                    {
+                        if (oldObj == null || !oldObj.Equals(selectedObject))
+                        {
+                            var s = selectedObject.GetComponent<BoxCollider>().size;
+                            init(s.x, s.y, s.z, selectedObject);
+                        }
+                    }
+                    catch (System.Exception ex)
+                    {
+                        txt.text = "txx" + ex.Message;
+                    }
+
                     //Берем размер объекта.
                     float xVal = selectedObject.transform.localScale.x;
                     float yVal = selectedObject.transform.localScale.y;
                     float zVal = selectedObject.transform.localScale.z;
 
                     //Если расстояние между пальцами стало меньше, то объект уменьшаем, иначе увеличиваем.
+                    //Vector3 gameobjname = new Vector3();
+                    //try
+                    //{
+                    //    txt.text = "DDDDD";
+                    //    txt.text += dictOfElements.Count.ToString();
+                    //    foreach (var item in dictOfElements)
+                    //    {
+                    //        txt.text += item.Key;
+                    //    }
+                    //    gameobjname = dictOfElements[selectedObject.name.Replace("(Clone)", "")];
+                    //}
+                    //catch (System.Exception ex)
+                    //{
+                    //    txt.text += "DAD" + ex.Message;
+                    //}
+
                     if (delta > 0)
                     {
                         selectedObject.transform.localScale = new Vector3(xVal + xVal * 0.05f, yVal + yVal * 0.05f, zVal + zVal * 0.05f);
+                        //dictOfElements[selectedObject.name.Replace("(Clone)", "")] = new Vector3(gameobjname.x + gameobjname.x * 0.05f, gameobjname.y + gameobjname.y * 0.05f, gameobjname.z + gameobjname.z * 0.05f);
+                        sizeN = new Vector3(sizeN.x + sizeN.x * 0.05f, sizeN.y + sizeN.y * 0.05f, sizeN.z + sizeN.z * 0.05f);
                     }
                     else if (delta < 0)
                     {
                         selectedObject.transform.localScale = new Vector3(xVal - xVal * 0.05f, yVal - yVal * 0.05f, zVal - zVal * 0.05f);
+                        //dictOfElements[selectedObject.name.Replace("(Clone)", "")] = new Vector3(gameobjname.x - gameobjname.x * 0.05f, gameobjname.y - gameobjname.y * 0.05f, gameobjname.z - gameobjname.z * 0.05f);
+                        sizeN = new Vector3(sizeN.x - sizeN.x * 0.05f, sizeN.y - sizeN.y * 0.05f, sizeN.z - sizeN.z * 0.05f);
+
+                    }
+
+                    oldObj = currObj;
+                    try
+                    {
+                        //var rend = selectedObject.GetComponent<BoxCollider>();
+                        txt.text += $"sizeee {selectedObject.name} {sizeN}";//{dictOfElements[selectedObject.name]}
+                        var getCanvasWithSize = selectedObject.GetComponentInChildren<Transform>().Find("Cube/Canvas").GetComponentsInChildren<Text>();
+                        getCanvasWithSize[0].text = System.String.Format("{0:f2}", sizeN.x) + " m";
+                        getCanvasWithSize[1].text = System.String.Format("{0:f2}", sizeN.z) + " m";
+                        getCanvasWithSize[2].text = System.String.Format("{0:f2}", sizeN.y) + " m"; 
+                        //var rectTrans = selectedObject.GetComponent<RectTransform>();
+                        //if (rectTrans != null)
+                        //{
+                        //    txt.text = $"size {rectTrans.rect.height.ToString()} {rectTrans.rect.width.ToString()}";
+                        //}
+                        //else
+                        //{
+                        //    txt.text = "NUUUUUULLL";
+                        //}
+                    }
+                    catch (System.Exception exx)
+                    {
+                        txt.text += "TUT" + exx.Message;
                     }
                 }
             }

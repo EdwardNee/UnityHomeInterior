@@ -56,7 +56,6 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporterWindow.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
@@ -72,6 +71,7 @@
     <Compile Include="Assets\Scripts\ARCoreScene\LoadAssetsData.cs" />
     <Compile Include="Assets\Scripts\ARCoreScene\Element.cs" />
     <Compile Include="Assets\Scripts\ARCoreScene\NetworkManager.cs" />
+    <Compile Include="Assets\Scripts\NewBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\ARCoreScene\DialogColorChange.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabModelWindow.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabLogger.cs" />
@@ -801,10 +801,6 @@
       <Project>{A1391F8E-EF01-A0C0-40E3-2241E6CEFF07}</Project>
       <Name>PhotonUnityNetworking.Utilities.PhotonPlayer.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="PunDemos.DemoHubEditor.csproj">
-      <Project>{E065327B-0698-8DCD-F2CD-45CEB3BC354A}</Project>
-      <Name>PunDemos.DemoHubEditor</Name>
-    </ProjectReference>
     <ProjectReference Include="PhotonRealtime.csproj">
       <Project>{D686D8A7-5D32-6B10-89F4-BAD4050ECDE3}</Project>
       <Name>PhotonRealtime</Name>
@@ -816,14 +812,6 @@
     <ProjectReference Include="PhotonUnityNetworking.csproj">
       <Project>{BEDED4B7-13DC-E3BF-D968-FC45C2CD8F77}</Project>
       <Name>PhotonUnityNetworking</Name>
-    </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Demos.csproj">
-      <Project>{CF78E2E7-B9C7-F07E-A98F-AC7D2669D0EA}</Project>
-      <Name>PhotonUnityNetworking.Demos</Name>
-    </ProjectReference>
-    <ProjectReference Include="PunDemos.DemoSlotcarEditor.csproj">
-      <Project>{269D8712-48DB-D446-70AE-7CC64ABD0B56}</Project>
-      <Name>PunDemos.DemoSlotcarEditor</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.Utilities.Culling.Editor.csproj">
       <Project>{C1353C7F-DDB2-520F-91F9-5A7FD9A87D56}</Project>

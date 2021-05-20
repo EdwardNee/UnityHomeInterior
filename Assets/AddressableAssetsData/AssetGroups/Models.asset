@@ -15,60 +15,60 @@ MonoBehaviour:
   m_GroupName: Models
   m_Data:
     m_SerializedData: []
-  m_GUID: a3300d72b06c2664f8b583b016af411e
+  m_GUID: 88c1ef60f761233429760703d391b27b
   m_SerializeEntries:
-  - m_GUID: 29364cc1b69339d4c98a61fdf2aca8f9
-    m_Address: furniture/double_bed
+  - m_GUID: 8492d652527e53947b1ff5674b32e95a
+    m_Address: Assets/AddressableAssets/furniture/Chair_Wood.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - furniture
-    m_MainAsset: {fileID: 11400000, guid: 29364cc1b69339d4c98a61fdf2aca8f9, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: 29364cc1b69339d4c98a61fdf2aca8f9, type: 2}
-  - m_GUID: fc55c72ed8cab864097f44406f13025e
-    m_Address: furniture/Modern_Couch
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 9af5d3d61b342944d9baecf59163ac74
+    m_Address: Assets/AddressableAssets/furniture/coffee_table.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - furniture
-    m_MainAsset: {fileID: 11400000, guid: fc55c72ed8cab864097f44406f13025e, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: fc55c72ed8cab864097f44406f13025e, type: 2}
-  - m_GUID: c4aba09c869852848b76bd93ccace45e
-    m_Address: furniture/Commode
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 33acb8d2e9d6bed4db3a9f3544fa001b
+    m_Address: Assets/AddressableAssets/furniture/Commode.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - furniture
-    m_MainAsset: {fileID: 11400000, guid: c4aba09c869852848b76bd93ccace45e, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: c4aba09c869852848b76bd93ccace45e, type: 2}
-  - m_GUID: 0d35ec6ce8696734ca4d1c6ef86a9161
-    m_Address: furniture/Bean_Bag
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: cb3301269caf3024e9c03ed42e876d54
+    m_Address: Assets/AddressableAssets/furniture/double_bed.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - furniture
-    m_MainAsset: {fileID: 11400000, guid: 0d35ec6ce8696734ca4d1c6ef86a9161, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: 0d35ec6ce8696734ca4d1c6ef86a9161, type: 2}
-  - m_GUID: 722fa95b1da14644f9e54f51044cbf1c
-    m_Address: furniture/Glass_Table
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 3837d2c7b6e7853438c41eb9f7cd0a39
+    m_Address: Assets/AddressableAssets/furniture/Glass_Table.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - furniture
-    m_MainAsset: {fileID: 11400000, guid: 722fa95b1da14644f9e54f51044cbf1c, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: 722fa95b1da14644f9e54f51044cbf1c, type: 2}
-  - m_GUID: bd1ff17714026df4aa213879d91f2346
-    m_Address: furniture/Chair_Wood
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 4f900a1e808e28a448c8cb1665a10d02
+    m_Address: Assets/AddressableAssets/furniture/Modern_Couch.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - furniture
-    m_MainAsset: {fileID: 11400000, guid: bd1ff17714026df4aa213879d91f2346, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: bd1ff17714026df4aa213879d91f2346, type: 2}
-  - m_GUID: 340751c843f46704eaa45cc5b2b12cde
-    m_Address: furniture/coffee_table
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 7334102cb20ae214592389b1c5ef2abf
+    m_Address: Assets/AddressableAssets/furniture/Bean_Bag.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - furniture
-    m_MainAsset: {fileID: 11400000, guid: 340751c843f46704eaa45cc5b2b12cde, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: 340751c843f46704eaa45cc5b2b12cde, type: 2}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: ff7540b33720b074396e2368e15022d1, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: c459e19f93558e743876b17a880c20de, type: 2}
-    - {fileID: 11400000, guid: 6e3429619959fc94986c8aea44270231, type: 2}
+    - {fileID: 11400000, guid: dd17b4568cbd4004da67a7c81ed54925, type: 2}
+    - {fileID: 11400000, guid: f2776e1952583f4469e04405b6c44e33, type: 2}

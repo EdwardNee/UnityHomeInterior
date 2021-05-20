@@ -67,6 +67,10 @@ public class LobbyManagerUnity : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         IsNetwork = true;
+        GetButtonsAnimator animScript = GetButtonsAnimator.Instace;
+        animScript.create.interactable = !IsNetwork;
+        animScript.join.interactable = !IsNetwork;
+        animScript.leave.interactable = IsNetwork;
         Log("Joined the room");
     }
 }
